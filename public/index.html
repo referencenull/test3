@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>📦 Inventory Management</h1>
+      <p>Manage your retail store inventory efficiently</p>
+    </header>
+
+    <!-- Controls Section -->
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search products...">
+      </div>
+      <button class="btn btn-primary" onclick="showAddProductModal()">+ Add New Product</button>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="totalProducts">0</div>
+        <div class="stat-label">Total Products</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="totalValue">$0</div>
+        <div class="stat-label">Total Inventory Value</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="lowStock">0</div>
+        <div class="stat-label">Low Stock Items</div>
+      </div>
+    </div>
+
+    <!-- Product Table -->
+    <div class="table-container">
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Value</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTableBody">
+          <!-- Products will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add/Edit Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add New Product</h2>
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <div class="form-group">
+          <label for="productName">Product Name *</label>
+          <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Category *</label>
+          <input type="text" id="productCategory" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="productPrice">Price ($) *</label>
+            <input type="number" id="productPrice" step="0.01" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="productQuantity">Quantity *</label>
+            <input type="number" id="productQuantity" min="0" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="productSku">SKU *</label>
+          <input type="text" id="productSku" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
