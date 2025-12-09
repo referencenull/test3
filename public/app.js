@@ -137,7 +137,8 @@ async function handleFormSubmit(e) {
         loadProducts();
         alert('Product updated successfully!');
       } else {
-        alert('Failed to update product');
+        const error = await response.json();
+        alert(error.error || 'Failed to update product');
       }
     } else {
       // Add new product
@@ -152,7 +153,8 @@ async function handleFormSubmit(e) {
         loadProducts();
         alert('Product added successfully!');
       } else {
-        alert('Failed to add product');
+        const error = await response.json();
+        alert(error.error || 'Failed to add product');
       }
     }
   } catch (error) {

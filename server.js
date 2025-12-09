@@ -79,6 +79,12 @@ app.post('/api/products', (req, res) => {
     }
     
     const db = readDatabase();
+    
+    // Check for duplicate SKU
+    if (db.products.some(p => p.sku === req.body.sku)) {
+      return res.status(400).json({ error: 'A product with this SKU already exists' });
+    }
+    
     const newProduct = {
       id: db.nextId,
       name: req.body.name,
@@ -102,7 +108,8 @@ app.post('/api/products', (req, res) => {
 app.put('/api/products/:id', (req, res) => {
   try {
     const db = readDatabase();
-    const index = db.products.findIndex(p => p.id === parseInt(req.params.id));
+    const productId = parseInt(req.params.id);
+    const index = db.products.findIndex(p => p.id === productId);
     
     if (index !== -1) {
       // Validate numeric fields if provided
@@ -120,6 +127,13 @@ app.put('/api/products/:id', (req, res) => {
         quantity = parseInt(req.body.quantity);
         if (isNaN(quantity) || quantity < 0) {
           return res.status(400).json({ error: 'Quantity must be a valid positive number' });
+        }
+      }
+      
+      // Check for duplicate SKU if SKU is being updated
+      if (req.body.sku && req.body.sku !== db.products[index].sku) {
+        if (db.products.some(p => p.sku === req.body.sku)) {
+          return res.status(400).json({ error: 'A product with this SKU already exists' });
         }
       }
       
