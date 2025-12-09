@@ -159,7 +159,15 @@
       "price": 34.99,
       "quantity": 130,
       "sku": "ELEC-007"
+    },
+    {
+      "id": 21,
+      "name": "Gaming Monitor 27-inch",
+      "category": "Electronics",
+      "price": 299.99,
+      "quantity": 100,
+      "sku": "ELEC-008"
     }
   ],
-  "nextId": 21
+  "nextId": 23
 }

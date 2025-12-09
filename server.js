@@ -12,13 +12,23 @@ app.use(express.static('public'));
 
 // Helper function to read database
 function readDatabase() {
-  const data = fs.readFileSync(DB_PATH, 'utf8');
-  return JSON.parse(data);
+  try {
+    const data = fs.readFileSync(DB_PATH, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error('Error reading database:', error);
+    throw new Error('Failed to read database');
+  }
 }
 
 // Helper function to write database
 function writeDatabase(data) {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  try {
+    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error writing database:', error);
+    throw new Error('Failed to write database');
+  }
 }
 
 // API Routes
@@ -51,13 +61,30 @@ app.get('/api/products/:id', (req, res) => {
 // Add new product
 app.post('/api/products', (req, res) => {
   try {
+    // Validate required fields
+    if (!req.body.name || !req.body.category || !req.body.sku) {
+      return res.status(400).json({ error: 'Name, category, and SKU are required' });
+    }
+    
+    const price = parseFloat(req.body.price);
+    const quantity = parseInt(req.body.quantity);
+    
+    // Validate numeric fields
+    if (isNaN(price) || price < 0) {
+      return res.status(400).json({ error: 'Price must be a valid positive number' });
+    }
+    
+    if (isNaN(quantity) || quantity < 0) {
+      return res.status(400).json({ error: 'Quantity must be a valid positive number' });
+    }
+    
     const db = readDatabase();
     const newProduct = {
       id: db.nextId,
       name: req.body.name,
       category: req.body.category,
-      price: parseFloat(req.body.price),
-      quantity: parseInt(req.body.quantity),
+      price: price,
+      quantity: quantity,
       sku: req.body.sku
     };
     
@@ -78,12 +105,30 @@ app.put('/api/products/:id', (req, res) => {
     const index = db.products.findIndex(p => p.id === parseInt(req.params.id));
     
     if (index !== -1) {
+      // Validate numeric fields if provided
+      let price = db.products[index].price;
+      let quantity = db.products[index].quantity;
+      
+      if (req.body.price !== undefined) {
+        price = parseFloat(req.body.price);
+        if (isNaN(price) || price < 0) {
+          return res.status(400).json({ error: 'Price must be a valid positive number' });
+        }
+      }
+      
+      if (req.body.quantity !== undefined) {
+        quantity = parseInt(req.body.quantity);
+        if (isNaN(quantity) || quantity < 0) {
+          return res.status(400).json({ error: 'Quantity must be a valid positive number' });
+        }
+      }
+      
       db.products[index] = {
         ...db.products[index],
         name: req.body.name || db.products[index].name,
         category: req.body.category || db.products[index].category,
-        price: req.body.price !== undefined ? parseFloat(req.body.price) : db.products[index].price,
-        quantity: req.body.quantity !== undefined ? parseInt(req.body.quantity) : db.products[index].quantity,
+        price: price,
+        quantity: quantity,
         sku: req.body.sku || db.products[index].sku
       };
       
