@@ -1,0 +1,173 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Mouse",
+      "category": "Electronics",
+      "price": 29.99,
+      "quantity": 150,
+      "sku": "ELEC-001"
+    },
+    {
+      "id": 2,
+      "name": "USB-C Cable",
+      "category": "Electronics",
+      "price": 12.99,
+      "quantity": 300,
+      "sku": "ELEC-002"
+    },
+    {
+      "id": 3,
+      "name": "Notebook A5",
+      "category": "Stationery",
+      "price": 5.99,
+      "quantity": 200,
+      "sku": "STAT-001"
+    },
+    {
+      "id": 4,
+      "name": "Ballpoint Pen (Black)",
+      "category": "Stationery",
+      "price": 1.99,
+      "quantity": 500,
+      "sku": "STAT-002"
+    },
+    {
+      "id": 5,
+      "name": "LED Desk Lamp",
+      "category": "Electronics",
+      "price": 45.99,
+      "quantity": 75,
+      "sku": "ELEC-003"
+    },
+    {
+      "id": 6,
+      "name": "Coffee Mug",
+      "category": "Kitchenware",
+      "price": 8.99,
+      "quantity": 120,
+      "sku": "KITCH-001"
+    },
+    {
+      "id": 7,
+      "name": "Water Bottle",
+      "category": "Kitchenware",
+      "price": 15.99,
+      "quantity": 180,
+      "sku": "KITCH-002"
+    },
+    {
+      "id": 8,
+      "name": "Bluetooth Headphones",
+      "category": "Electronics",
+      "price": 79.99,
+      "quantity": 90,
+      "sku": "ELEC-004"
+    },
+    {
+      "id": 9,
+      "name": "Desk Organizer",
+      "category": "Office",
+      "price": 24.99,
+      "quantity": 65,
+      "sku": "OFFC-001"
+    },
+    {
+      "id": 10,
+      "name": "Sticky Notes Pack",
+      "category": "Stationery",
+      "price": 6.99,
+      "quantity": 250,
+      "sku": "STAT-003"
+    },
+    {
+      "id": 11,
+      "name": "Wireless Keyboard",
+      "category": "Electronics",
+      "price": 59.99,
+      "quantity": 110,
+      "sku": "ELEC-005"
+    },
+    {
+      "id": 12,
+      "name": "Laptop Stand",
+      "category": "Office",
+      "price": 39.99,
+      "quantity": 85,
+      "sku": "OFFC-002"
+    },
+    {
+      "id": 13,
+      "name": "Phone Holder",
+      "category": "Accessories",
+      "price": 14.99,
+      "quantity": 140,
+      "sku": "ACCS-001"
+    },
+    {
+      "id": 14,
+      "name": "Whiteboard Markers Set",
+      "category": "Stationery",
+      "price": 9.99,
+      "quantity": 95,
+      "sku": "STAT-004"
+    },
+    {
+      "id": 15,
+      "name": "Desk Calendar 2024",
+      "category": "Stationery",
+      "price": 12.99,
+      "quantity": 50,
+      "sku": "STAT-005"
+    },
+    {
+      "id": 16,
+      "name": "Ergonomic Mouse Pad",
+      "category": "Office",
+      "price": 18.99,
+      "quantity": 125,
+      "sku": "OFFC-003"
+    },
+    {
+      "id": 17,
+      "name": "USB Hub 4-Port",
+      "category": "Electronics",
+      "price": 22.99,
+      "quantity": 100,
+      "sku": "ELEC-006"
+    },
+    {
+      "id": 18,
+      "name": "Document Folder",
+      "category": "Stationery",
+      "price": 7.99,
+      "quantity": 175,
+      "sku": "STAT-006"
+    },
+    {
+      "id": 19,
+      "name": "Cable Clips Set",
+      "category": "Accessories",
+      "price": 4.99,
+      "quantity": 220,
+      "sku": "ACCS-002"
+    },
+    {
+      "id": 20,
+      "name": "Portable Charger 10000mAh",
+      "category": "Electronics",
+      "price": 34.99,
+      "quantity": 130,
+      "sku": "ELEC-007"
+    },
+    {
+      "id": 21,
+      "name": "Gaming Monitor 27-inch",
+      "category": "Electronics",
+      "price": 299.99,
+      "quantity": 100,
+      "sku": "ELEC-008"
+    }
+  ],
+  "nextId": 23
+}
